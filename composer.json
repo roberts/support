@@ -2,8 +2,8 @@
     "name": "roberts/support",
     "description": "Common functions used in Laravel packages",
     "keywords": [
-        "roberts",
         "laravel",
+        "laravel package",
         "support"
     ],
     "homepage": "https://github.com/roberts/support",
