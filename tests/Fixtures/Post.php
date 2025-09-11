@@ -9,8 +9,8 @@ use Roberts\Support\Traits\HasUpdater;
 
 class Post extends Model
 {
-    use HasFactory;
     use HasCreator;
+    use HasFactory;
     use HasUpdater;
 
     protected $guarded = [];

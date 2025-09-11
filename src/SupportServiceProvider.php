@@ -4,7 +4,6 @@ namespace Roberts\Support;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Roberts\Support\Commands\SupportCommand;
 
 class SupportServiceProvider extends PackageServiceProvider
 {

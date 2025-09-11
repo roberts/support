@@ -3,9 +3,9 @@
 namespace Roberts\Support\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Roberts\Support\SupportServiceProvider;
-use Illuminate\Support\Facades\Schema;
 use Roberts\Support\Tests\Fixtures\User;
 
 class TestCase extends Orchestra

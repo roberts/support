@@ -2,8 +2,8 @@
 
 namespace Roberts\Support\Traits;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Auth;
 
 trait HasUpdater
 {
