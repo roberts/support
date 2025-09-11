@@ -16,10 +16,6 @@ class SupportServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('support')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_support_table')
-            ->hasCommand(SupportCommand::class);
+            ->name('support');
     }
 }

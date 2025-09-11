@@ -36,7 +36,10 @@
         "psr-4": {
             "Roberts\\Support\\": "src/",
             "Roberts\\Support\\Database\\Factories\\": "database/factories/"
-        }
+        },
+        "files": [
+            "src/Helpers/Test.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

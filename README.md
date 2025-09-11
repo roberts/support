@@ -5,7 +5,14 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/roberts/support/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/roberts/support/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/roberts/support.svg?style=flat-square)](https://packagist.org/packages/roberts/support)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Traits & Helper functions that are used in multiple Laravel packages & applications.
+
+Test Function
+- randomOrCreate
+
+Model Traits
+- HasCreator
+- HasUpdater
 
 ## Installation
 
@@ -15,37 +22,56 @@ You can install the package via composer:
 composer require roberts/support
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="support-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="support-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="support-views"
-```
-
 ## Usage
 
+On packages or Laravel applications that require this package, you can add these Traits to models:
+
 ```php
-$support = new Roberts\Support();
-echo $support->echoPhrase('Hello, Roberts!');
+use HasCreator, HasUpdater;
+```
+
+### Expected Columns
+
+When using the `HasCreator` and/or `HasUpdater` traits on a model, add the following nullable columns to your table:
+
+- `creator_id` (unsignedBigInteger, nullable)
+- `updater_id` (unsignedBigInteger, nullable)
+
+Example migration snippet:
+
+```php
+Schema::table('your_table', function (Blueprint $table) {
+	$table->unsignedBigInteger('creator_id')->nullable();
+	$table->unsignedBigInteger('updater_id')->nullable();
+
+	// Optional: add foreign keys if your users table is bigint IDs
+	// $table->foreign('creator_id')->references('id')->on('users')->nullOnDelete();
+	// $table->foreign('updater_id')->references('id')->on('users')->nullOnDelete();
+});
+```
+
+The traits automatically:
+- Set `creator_id` on model creating (when an authenticated user is present).
+- Set `updater_id` on model saving (create and update) when an authenticated user is present.
+
+### Overriding the Auth Provider Model
+
+By default, the traits resolve the related user model from `config('auth.providers.users.model')`.
+If your application uses a different provider or model, ensure the config points to your user class. For example, in `config/auth.php`:
+
+```php
+'providers' => [
+	'users' => [
+		'driver' => 'eloquent',
+		'model' => App\Models\User::class,
+	],
+],
+```
+
+Or override at runtime (e.g., inside a service provider) if needed:
+
+```php
+config(['auth.providers.users.model' => App\Domain\Auth\User::class]);
 ```
 
 ## Testing

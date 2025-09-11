@@ -5,8 +5,8 @@ parameters:
     level: 5
     paths:
         - src
-        - config
-        - database
     tmpDir: build/phpstan
     checkOctaneCompatibility: true
     checkModelProperties: true
+    ignoreErrors:
+        - '#Trait Roberts\\Support\\Traits\\.* is used zero times and is not analysed#'
