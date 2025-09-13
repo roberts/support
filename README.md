@@ -10,9 +10,19 @@ Traits & Helper functions that are used in multiple Laravel packages & applicati
 Test Function
 - randomOrCreate
 
-Model Traits
+Model Traits for Model Edits
 - HasCreator
 - HasUpdater
+
+Model Traits for Status
+- HasActiveStatus
+- HasApplicationStatus
+- HasApprovalStatus
+- HasModeratorStatus
+- HasOrderStatus
+- HasProcessingStatus
+- HasPublishingStatus
+- HasSubscriptionStatus
 
 ## Installation
 
@@ -24,11 +34,13 @@ composer require roberts/support
 
 ## Usage
 
-On packages or Laravel applications that require this package, you can add these Traits to models:
+On packages or Laravel applications that require this package, you can add the Traits to models like:
 
 ```php
-use HasCreator, HasUpdater;
+use HasCreator, HasUpdater, HasPublishingStatus;
 ```
+
+You may only add 1 of the Status Traits since they all use the same `status` database field.
 
 ### Expected Columns
 
