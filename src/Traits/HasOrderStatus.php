@@ -12,6 +12,13 @@ trait HasOrderStatus
         $this->casts['status'] = OrderStatus::class;
     }
 
+    protected static function bootHasOrderStatus()
+    {
+        static::creating(function ($model) {
+            $model->status = OrderStatus::CART;
+        });
+    }
+
     public function getStatus(): OrderStatus
     {
         return $this->status ?? OrderStatus::CART;

@@ -12,6 +12,13 @@ trait HasModeratorStatus
         $this->casts['status'] = ModeratorStatus::class;
     }
 
+    protected static function bootHasModeratorStatus()
+    {
+        static::creating(function ($model) {
+            $model->status = ModeratorStatus::PENDING;
+        });
+    }
+
     public function getStatus(): ModeratorStatus
     {
         return $this->status ?? ModeratorStatus::PENDING;

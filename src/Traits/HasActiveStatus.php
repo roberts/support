@@ -12,6 +12,13 @@ trait HasActiveStatus
         $this->casts['status'] = ActiveStatus::class;
     }
 
+    protected static function bootHasActiveStatus()
+    {
+        static::creating(function ($model) {
+            $model->status = ActiveStatus::ACTIVE;
+        });
+    }
+
     public function getStatus(): ActiveStatus
     {
         return $this->status ?? ActiveStatus::INACTIVE;

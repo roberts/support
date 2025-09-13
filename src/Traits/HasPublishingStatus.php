@@ -12,6 +12,13 @@ trait HasPublishingStatus
         $this->casts['status'] = PublishingStatus::class;
     }
 
+    protected static function bootHasPublishingStatus()
+    {
+        static::creating(function ($model) {
+            $model->status = PublishingStatus::DRAFT;
+        });
+    }
+
     public function getStatus(): PublishingStatus
     {
         return $this->status ?? PublishingStatus::DRAFT;

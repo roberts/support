@@ -12,6 +12,13 @@ trait HasApprovalStatus
         $this->casts['status'] = ApprovalStatus::class;
     }
 
+    protected static function bootHasApprovalStatus()
+    {
+        static::creating(function ($model) {
+            $model->status = ApprovalStatus::PENDING;
+        });
+    }
+
     public function getStatus(): ApprovalStatus
     {
         return $this->status ?? ApprovalStatus::SUBMITTED;

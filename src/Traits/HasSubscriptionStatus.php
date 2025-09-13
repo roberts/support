@@ -12,6 +12,13 @@ trait HasSubscriptionStatus
         $this->casts['status'] = SubscriptionStatus::class;
     }
 
+    protected static function bootHasSubscriptionStatus()
+    {
+        static::creating(function ($model) {
+            $model->status = SubscriptionStatus::TRIAL;
+        });
+    }
+
     public function getStatus(): SubscriptionStatus
     {
         return $this->status ?? SubscriptionStatus::TRIAL;

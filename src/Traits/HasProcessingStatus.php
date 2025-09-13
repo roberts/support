@@ -12,6 +12,13 @@ trait HasProcessingStatus
         $this->casts['status'] = ProcessingStatus::class;
     }
 
+    protected static function bootHasProcessingStatus()
+    {
+        static::creating(function ($model) {
+            $model->status = ProcessingStatus::PENDING;
+        });
+    }
+
     public function getStatus(): ProcessingStatus
     {
         return $this->status ?? ProcessingStatus::PENDING;

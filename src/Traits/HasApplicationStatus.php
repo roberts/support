@@ -12,6 +12,13 @@ trait HasApplicationStatus
         $this->casts['status'] = ApplicationStatus::class;
     }
 
+    protected static function bootHasApplicationStatus()
+    {
+        static::creating(function ($model) {
+            $model->status = ApplicationStatus::STARTED;
+        });
+    }
+
     public function getStatus(): ApplicationStatus
     {
         return $this->status ?? ApplicationStatus::STARTED;
