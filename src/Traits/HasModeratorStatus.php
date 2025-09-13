@@ -108,7 +108,7 @@ trait HasModeratorStatus
         return $query->whereIn('status', [ModeratorStatus::APPROVED, ModeratorStatus::REJECTED]);
     }
 
-    public function scopeNeedsModerator(Builder $query): Builder
+    public function scopeNeedsModeration(Builder $query): Builder
     {
         return $query->whereIn('status', [ModeratorStatus::PENDING, ModeratorStatus::FLAGGED]);
     }
