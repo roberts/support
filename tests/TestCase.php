@@ -49,5 +49,62 @@ class TestCase extends Orchestra
             $table->unsignedBigInteger('updater_id')->nullable();
             $table->timestamps();
         });
+
+        // Individual test tables for status traits
+        Schema::create('test_active_models', function ($table) {
+            $table->id();
+            $table->string('name');
+            $table->string('status');
+            $table->timestamps();
+        });
+
+        Schema::create('test_publishing_models', function ($table) {
+            $table->id();
+            $table->string('name');
+            $table->string('status');
+            $table->timestamps();
+        });
+
+        Schema::create('test_processing_models', function ($table) {
+            $table->id();
+            $table->string('name');
+            $table->string('status');
+            $table->timestamps();
+        });
+
+        Schema::create('test_approval_models', function ($table) {
+            $table->id();
+            $table->string('name');
+            $table->string('status');
+            $table->timestamps();
+        });
+
+        Schema::create('test_application_models', function ($table) {
+            $table->id();
+            $table->string('name');
+            $table->string('status');
+            $table->timestamps();
+        });
+
+        Schema::create('test_order_models', function ($table) {
+            $table->id();
+            $table->string('name');
+            $table->string('status');
+            $table->timestamps();
+        });
+
+        Schema::create('test_subscription_models', function ($table) {
+            $table->id();
+            $table->string('name');
+            $table->string('status');
+            $table->timestamps();
+        });
+
+        Schema::create('test_moderator_models', function ($table) {
+            $table->id();
+            $table->string('name');
+            $table->string('status');
+            $table->timestamps();
+        });
     }
 }
