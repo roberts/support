@@ -38,6 +38,11 @@ trait HasModeratorStatus
         return $this->setStatus(ModeratorStatus::PENDING);
     }
 
+    public function flag(): static
+    {
+        return $this->setStatus(ModeratorStatus::FLAGGED);
+    }
+
     public function approve(): static
     {
         return $this->setStatus(ModeratorStatus::APPROVED);
@@ -48,14 +53,14 @@ trait HasModeratorStatus
         return $this->setStatus(ModeratorStatus::REJECTED);
     }
 
-    public function flag(): static
-    {
-        return $this->setStatus(ModeratorStatus::FLAGGED);
-    }
-
     public function isPending(): bool
     {
         return $this->getStatus()->isPending();
+    }
+
+    public function isFlagged(): bool
+    {
+        return $this->getStatus()->isFlagged();
     }
 
     public function isApproved(): bool
@@ -68,24 +73,24 @@ trait HasModeratorStatus
         return $this->getStatus()->isRejected();
     }
 
-    public function isFlagged(): bool
-    {
-        return $this->getStatus()->isFlagged();
-    }
-
     public function isDecided(): bool
     {
         return $this->getStatus()->isDecided();
     }
 
-    public function needsAttention(): bool
+    public function needsModeration(): bool
     {
-        return $this->getStatus()->needsAttention();
+        return $this->getStatus()->needsModeration();
     }
 
     public function scopePending(Builder $query): Builder
     {
         return $query->where('status', ModeratorStatus::PENDING);
+    }
+
+    public function scopeFlagged(Builder $query): Builder
+    {
+        return $query->where('status', ModeratorStatus::FLAGGED);
     }
 
     public function scopeApproved(Builder $query): Builder
@@ -98,17 +103,12 @@ trait HasModeratorStatus
         return $query->where('status', ModeratorStatus::REJECTED);
     }
 
-    public function scopeFlagged(Builder $query): Builder
-    {
-        return $query->where('status', ModeratorStatus::FLAGGED);
-    }
-
     public function scopeDecided(Builder $query): Builder
     {
         return $query->whereIn('status', [ModeratorStatus::APPROVED, ModeratorStatus::REJECTED]);
     }
 
-    public function scopeNeedsModeration(Builder $query): Builder
+    public function scopeNeedingModeration(Builder $query): Builder
     {
         return $query->whereIn('status', [ModeratorStatus::PENDING, ModeratorStatus::FLAGGED]);
     }

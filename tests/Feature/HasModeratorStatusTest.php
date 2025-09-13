@@ -94,6 +94,16 @@ it('checks if it is decided', function () {
     expect($pending->isDecided())->toBeFalse();
 });
 
+it('checks if it needs moderation', function () {
+    $pending = TestModeratorModel::create(['name' => 'test-pending', 'status' => ModeratorStatus::PENDING]);
+    $flagged = TestModeratorModel::create(['name' => 'test-flagged', 'status' => ModeratorStatus::FLAGGED]);
+    $approved = TestModeratorModel::create(['name' => 'test-approved', 'status' => ModeratorStatus::APPROVED]);
+
+    expect($pending->needsModeration())->toBeTrue();
+    expect($flagged->needsModeration())->toBeTrue();
+    expect($approved->needsModeration())->toBeFalse();
+});
+
 it('has a pending scope', function () {
     TestModeratorModel::create(['name' => 'pending-1', 'status' => ModeratorStatus::PENDING]);
     TestModeratorModel::create(['name' => 'pending-2', 'status' => ModeratorStatus::PENDING]);
@@ -149,12 +159,12 @@ it('has a decided scope', function () {
         ->and($models->pluck('name')->all())->toBe(['approved-1', 'rejected-1']);
 });
 
-it('has a needs a moderation scope', function () {
+it('has a needing moderation scope', function () {
     TestModeratorModel::create(['name' => 'pending-1', 'status' => ModeratorStatus::PENDING]);
     TestModeratorModel::create(['name' => 'flagged-1', 'status' => ModeratorStatus::FLAGGED]);
     TestModeratorModel::create(['name' => 'approved-1', 'status' => ModeratorStatus::APPROVED]);
 
-    $models = TestModeratorModel::needsModeration()->get();
+    $models = TestModeratorModel::needingModeration()->get();
 
     expect($models)->toHaveCount(2)
         ->and($models->pluck('name')->all())->toBe(['pending-1', 'flagged-1']);
