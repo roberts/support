@@ -40,9 +40,15 @@ On packages or Laravel applications that require this package, you can add the T
 use HasCreator, HasUpdater, HasPublishingStatus;
 ```
 
-You may only add 1 of the Status Traits since they all use the same `status` database field.
+You may only add 1 of the Status Traits since they all use the same `status` database column. They are not designed to work together but to replace the functionality with the Enum structures.
 
 ### Expected Columns
+
+When using any of the Status Traits on a model, add the following format for the `status` database column on your table:
+
+- `status` (string (25 character max), nullable, index)
+
+**Note:** Status traits automatically set appropriate default values when models are created (e.g., `pending` for moderator status, `active` for active status).
 
 When using the `HasCreator` and/or `HasUpdater` traits on a model, add the following nullable columns to your table:
 
@@ -53,6 +59,8 @@ Example migration snippet:
 
 ```php
 Schema::table('your_table', function (Blueprint $table) {
+	$table->string('status', 25)->nullable()->index();
+
 	$table->unsignedBigInteger('creator_id')->nullable();
 	$table->unsignedBigInteger('updater_id')->nullable();
 
@@ -68,7 +76,7 @@ The traits automatically:
 
 ### Overriding the Auth Provider Model
 
-By default, the traits resolve the related user model from `config('auth.providers.users.model')`.
+By default, the creator & updater traits resolve the related user model from `config('auth.providers.users.model')`.
 If your application uses a different provider or model, ensure the config points to your user class. For example, in `config/auth.php`:
 
 ```php
@@ -85,6 +93,18 @@ Or override at runtime (e.g., inside a service provider) if needed:
 ```php
 config(['auth.providers.users.model' => App\Domain\Auth\User::class]);
 ```
+
+## Enums
+
+Status traits use enums with the following values, setting the first one on model creation:
+- `HasActiveStatus`: active, inactive
+- `HasApplicationStatus`: pending, started, verified, applied, accepted, rejected
+- `HasApprovalStatus`: pending, submitted, approved, rejected
+- `HasModeratorStatus`: pending, flagged, approved, rejected
+- `HasOrderStatus`: cart, pending, checkout, paid, shipped, delivered, canceled
+- `HasProcessingStatus`: pending, processing, completed, failed
+- `HasPublishingStatus`: draft, scheduled, published, archived
+- `HasSubscriptionStatus`: trial, active, canceled, expired
 
 ## Testing
 
