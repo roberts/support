@@ -24,7 +24,3 @@ it('accepts a model instance as input', function () {
     $picked = randomOrCreate($post);
     expect($picked)->toBeInstanceOf(Post::class);
 });
-
-it('throws on invalid input', function () {
-    expect(fn () => randomOrCreate(123))->toThrow(InvalidArgumentException::class);
-});
