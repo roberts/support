@@ -15,7 +15,7 @@ trait HasProcessingStatus
     protected static function bootHasProcessingStatus()
     {
         static::creating(function ($model) {
-            if (!isset($model->attributes['status']) && $model->status === null) {
+            if (! isset($model->attributes['status']) && $model->status === null) {
                 $model->status = ProcessingStatus::PENDING;
             }
         });

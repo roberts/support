@@ -15,7 +15,7 @@ trait HasApprovalStatus
     protected static function bootHasApprovalStatus()
     {
         static::creating(function ($model) {
-            if (!isset($model->attributes['status']) && $model->status === null) {
+            if (! isset($model->attributes['status']) && $model->status === null) {
                 $model->status = ApprovalStatus::PENDING;
             }
         });

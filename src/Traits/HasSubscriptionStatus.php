@@ -15,7 +15,7 @@ trait HasSubscriptionStatus
     protected static function bootHasSubscriptionStatus()
     {
         static::creating(function ($model) {
-            if (!isset($model->attributes['status']) && $model->status === null) {
+            if (! isset($model->attributes['status']) && $model->status === null) {
                 $model->status = SubscriptionStatus::TRIAL;
             }
         });

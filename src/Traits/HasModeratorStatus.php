@@ -15,7 +15,7 @@ trait HasModeratorStatus
     protected static function bootHasModeratorStatus()
     {
         static::creating(function ($model) {
-            if (!isset($model->attributes['status']) && $model->status === null) {
+            if (! isset($model->attributes['status']) && $model->status === null) {
                 $model->status = ModeratorStatus::PENDING;
             }
         });
