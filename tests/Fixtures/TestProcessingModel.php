@@ -11,5 +11,5 @@ class TestProcessingModel extends Model
 
     protected $table = 'test_processing_models';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'status'];
 }

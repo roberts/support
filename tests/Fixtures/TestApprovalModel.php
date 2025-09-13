@@ -11,5 +11,5 @@ class TestApprovalModel extends Model
 
     protected $table = 'test_approval_models';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'status'];
 }

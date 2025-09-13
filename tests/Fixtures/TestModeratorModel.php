@@ -11,5 +11,5 @@ class TestModeratorModel extends Model
 
     protected $table = 'test_moderator_models';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'status'];
 }

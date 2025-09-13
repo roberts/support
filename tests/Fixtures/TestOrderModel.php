@@ -11,5 +11,5 @@ class TestOrderModel extends Model
 
     protected $table = 'test_order_models';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'status'];
 }

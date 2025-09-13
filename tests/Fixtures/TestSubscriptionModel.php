@@ -11,5 +11,5 @@ class TestSubscriptionModel extends Model
 
     protected $table = 'test_subscription_models';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'status'];
 }
