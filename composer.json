@@ -21,6 +21,8 @@
         "illuminate/contracts": "^12.26"
     },
     "require-dev": {
+        "guzzlehttp/guzzle": "^7.9",
+        "guzzlehttp/promises": "^2.0",
         "laravel/pint": "^1.14",
         "nunomaduro/collision": "^8.8.2",
         "larastan/larastan": "^3.0",
@@ -30,7 +32,9 @@
         "pestphp/pest-plugin-laravel": "^4.0",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan-deprecation-rules": "^2.0",
-        "phpstan/phpstan-phpunit": "^2.0"
+        "phpstan/phpstan-phpunit": "^2.0",
+        "psy/psysh": "^0.12.4",
+        "symfony/translation": "^7.1"
     },
     "autoload": {
         "psr-4": {
