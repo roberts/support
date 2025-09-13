@@ -15,7 +15,9 @@ trait HasPublishingStatus
     protected static function bootHasPublishingStatus()
     {
         static::creating(function ($model) {
-            $model->status = PublishingStatus::DRAFT;
+            if (!isset($model->attributes['status']) && $model->status === null) {
+                $model->status = PublishingStatus::DRAFT;
+            }
         });
     }
 

@@ -15,7 +15,9 @@ trait HasApplicationStatus
     protected static function bootHasApplicationStatus()
     {
         static::creating(function ($model) {
-            $model->status = ApplicationStatus::STARTED;
+            if (!isset($model->attributes['status']) && $model->status === null) {
+                $model->status = ApplicationStatus::STARTED;
+            }
         });
     }
 

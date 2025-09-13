@@ -15,7 +15,9 @@ trait HasOrderStatus
     protected static function bootHasOrderStatus()
     {
         static::creating(function ($model) {
-            $model->status = OrderStatus::CART;
+            if (!isset($model->attributes['status']) && $model->status === null) {
+                $model->status = OrderStatus::CART;
+            }
         });
     }
 

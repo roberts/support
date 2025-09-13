@@ -15,7 +15,9 @@ trait HasActiveStatus
     protected static function bootHasActiveStatus()
     {
         static::creating(function ($model) {
-            $model->status = ActiveStatus::ACTIVE;
+            if (!isset($model->attributes['status']) && $model->status === null) {
+                $model->status = ActiveStatus::ACTIVE;
+            }
         });
     }
 
