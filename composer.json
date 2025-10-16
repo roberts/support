@@ -60,7 +60,9 @@
         "analyse": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/pint"
+        "format": "vendor/bin/pint",
+        "support:scaffold": "@php artisan support:scaffold",
+        "support:update": "@php artisan support:update"
     },
     "config": {
         "sort-packages": true,

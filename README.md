@@ -5,12 +5,34 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/roberts/support/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/roberts/support/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/roberts/support.svg?style=flat-square)](https://packagist.org/packages/roberts/support)
 
-Traits & Helper functions that are used in multiple Laravel packages & applications.
+Traits, Helper functions, and scaffolding tools for Laravel packages & applications.
 
-Test Function
-- randomOrCreate
+## 🚀 Quick Start: Project Scaffolding
 
-Model Traits for Model Edits
+Quickly set up GitHub Actions, Docker, and Google Cloud Run deployment:
+
+```bash
+composer require roberts/support
+composer support:scaffold
+```
+
+This automatically generates:
+- ✅ GitHub Actions workflows (tests, PHPStan, linting, deployment)
+- ✅ Docker configuration for Cloud Run
+- ✅ PHPStan configuration
+- ✅ VS Code workspace settings
+
+**[📚 Full Scaffolding Documentation →](SCAFFOLDING.md)**
+
+## Features
+
+### Project Scaffolding
+- **Auto-detect** project type (Laravel app or package)
+- **Smart detection** of features (Flux, Filament, Twitter, Mail)
+- **One command** to set up complete CI/CD pipeline
+- **Google Cloud Run** deployment ready
+
+### Model Traits
 - HasCreator
 - HasUpdater
 
