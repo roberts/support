@@ -83,12 +83,8 @@ Example migration snippet:
 Schema::table('your_table', function (Blueprint $table) {
 	$table->string('status', 25)->nullable()->index();
 
-	$table->unsignedBigInteger('creator_id')->nullable();
-	$table->unsignedBigInteger('updater_id')->nullable();
-
-	// Optional: add foreign keys if your users table is bigint IDs
-	// $table->foreign('creator_id')->references('id')->on('users')->nullOnDelete();
-	// $table->foreign('updater_id')->references('id')->on('users')->nullOnDelete();
+	$table->foreignId('creator_id')->nullable()->constrained('users');
+	$table->foreignId('updater_id')->nullable()->constrained('users');
 });
 ```
 
