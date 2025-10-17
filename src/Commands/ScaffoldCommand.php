@@ -9,7 +9,7 @@ use Roberts\Support\Services\FeatureDetector;
 use Roberts\Support\Services\ProjectDetector;
 use Roberts\Support\Services\StubPublisher;
 
-class InitCommand extends Command
+class ScaffoldCommand extends Command
 {
     protected $signature = 'support:scaffold';
 

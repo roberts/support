@@ -2,7 +2,7 @@
 
 namespace Roberts\Support;
 
-use Roberts\Support\Commands\InitCommand;
+use Roberts\Support\Commands\ScaffoldCommand;
 use Roberts\Support\Commands\UpdateCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -19,7 +19,7 @@ class SupportServiceProvider extends PackageServiceProvider
         $package
             ->name('support')
             ->hasCommands([
-                InitCommand::class,
+                ScaffoldCommand::class,
                 UpdateCommand::class,
             ]);
     }
