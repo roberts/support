@@ -78,8 +78,6 @@ class ScaffoldCommand extends Command
         return $composer['name'] ?? 'my-project';
     }
 
-
-
     protected function displayNextSteps(string $type): void
     {
         $this->newLine();
