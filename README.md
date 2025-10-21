@@ -9,7 +9,7 @@ Traits, Helper functions, and scaffolding tools for Laravel packages & applicati
 
 ## 🚀 Quick Start: Project Scaffolding
 
-Quickly set up GitHub Actions, Docker, and Google Cloud Run deployment:
+Quickly set up GitHub Workflow, Actions and Docker:
 
 ```bash
 composer require roberts/support
@@ -17,12 +17,12 @@ composer support:scaffold
 ```
 
 This automatically generates:
-- ✅ GitHub Actions workflows (tests, PHPStan, linting, deployment)
+- ✅ GitHub Actions workflows (tests, PHPStan, linting)
 - ✅ Docker configuration for Cloud Run
 - ✅ PHPStan configuration
 - ✅ VS Code workspace settings
 
-**[📚 Full Scaffolding Documentation →](SCAFFOLDING.md)**
+**[Scaffolding Documentation →](SCAFFOLDING.md)**
 
 ## Features
 

@@ -20,7 +20,6 @@ class StubPublisher
             ['support::stubs.app.github.workflows.tests', '.github/workflows/tests.yml'],
             ['support::stubs.app.github.workflows.phpstan', '.github/workflows/phpstan.yml'],
             ['support::stubs.app.github.workflows.lint', '.github/workflows/lint.yml'],
-            ['support::stubs.app.github.workflows.deploy', '.github/workflows/deploy.yml'],
 
             // Docker files
             ['support::stubs.app.docker.Dockerfile', 'Dockerfile'],
