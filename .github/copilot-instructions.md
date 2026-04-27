@@ -2,14 +2,14 @@
 
 Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the information here.
 
-This is a Laravel 12.25+ package providing common traits and helper functions used across multiple Laravel applications. The package provides `HasCreator` and `HasUpdater` traits for automatically tracking user IDs on model operations, plus a `randomOrCreate()` test helper function.
+This is a Laravel 13.0+ package providing common traits and helper functions used across multiple Laravel applications. The package provides `HasCreator` and `HasUpdater` traits for automatically tracking user IDs on model operations, plus a `randomOrCreate()` test helper function.
 
 ## Working Effectively
 
 **Bootstrap and validate the repository:**
-- Requires PHP 8.4+ (check with `php --version`)
+- Requires PHP 8.5+ (check with `php --version`)
 - `composer install --no-interaction` -- installs all dependencies in ~44 seconds
-- If PHP 8.4 unavailable, use `composer install --ignore-platform-reqs --no-interaction` to install with warnings
+- If PHP 8.5 unavailable, use `composer install --ignore-platform-reqs --no-interaction` to install with warnings
 - `composer test` -- runs Pest test suite with 9 tests in ~1.3 seconds. NEVER CANCEL.
 - `composer analyse` -- runs PHPStan static analysis in ~3.6 seconds. NEVER CANCEL.
 - `composer format` -- runs Laravel Pint code formatting in ~1 second. NEVER CANCEL.
@@ -94,7 +94,7 @@ class YourModel extends Model
 
 ## GitHub Actions CI Pipeline
 
-The CI runs on PHP 8.4 with Laravel 12.25 on Ubuntu and Windows:
+The CI runs on PHP 8.5 with Laravel 13.0 on Ubuntu and Windows:
 - **Tests:** Run with `vendor/bin/pest --ci` (timeout: 5 minutes)
 - **Code style:** Auto-fixes with Laravel Pint and commits changes  
 - **PHPStan:** Runs static analysis with GitHub error format (timeout: 5 minutes)
@@ -102,7 +102,7 @@ The CI runs on PHP 8.4 with Laravel 12.25 on Ubuntu and Windows:
 
 ## Important Notes
 
-- Package requires PHP 8.4+ and Laravel 12.25+ in production
+- Package requires PHP 8.5+ and Laravel 13.0+ in production
 - Uses Spatie Laravel Package Tools for package scaffolding
 - All timing estimates based on validation runs - actual performance may vary
 - Total codebase: 6 source files, 10 test files, ~51 PHP files total excluding vendor

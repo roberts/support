@@ -60,7 +60,7 @@ You'll be prompted for each existing file:
 ### For Laravel Packages
 
 **GitHub Workflows:**
-- `run-tests.yml` - Matrix testing (PHP 8.4, Laravel 12)
+- `run-tests.yml` - Matrix testing (PHP 8.5, Laravel 13)
 - `phpstan.yml` - Static analysis
 - `fix-php-code-style-issues.yml` - Auto-fix code style
 
@@ -159,7 +159,7 @@ Check that Cloud SQL connection is configured correctly and the database exists.
 ## Requirements
 
 - PHP 8.4+
-- Laravel 12+
+- Laravel 13+
 - Git repository with GitHub
 - Google Cloud account (for app deployments)
 

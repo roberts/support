@@ -1,4 +1,4 @@
-# Dockerfile for Laravel 12 on PHP 8.4 - Google Cloud Run
+# Dockerfile for Laravel 12 on PHP 8.5 - Google Cloud Run
 # Multi-stage build: Builder stage for assets, Production stage for runtime
 
 # ============================================
@@ -21,9 +21,9 @@ COPY . .
 RUN npm run build
 
 # ============================================
-# Production Stage: PHP 8.4 with Apache
+# Production Stage: PHP 8.5 with Apache
 # ============================================
-FROM php:8.4-apache
+FROM php:8.5-apache
 
 LABEL maintainer="{{ $projectId }}"
 LABEL description="Laravel 12 Application"
