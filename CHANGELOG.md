@@ -18,3 +18,8 @@ All notable changes to `support` will be documented in this file.
 - add hassubscriptionstatus trait
 - add scaffold command
 - add update command
+
+## 2.0.0 - 2026-04-27
+
+- upgrade to php 8.5
+- upgrade to laravel 13
