@@ -13,11 +13,11 @@ if (! function_exists('randomOrCreate')) {
             : $classNameOrModel::class;
 
         if (! class_exists($className)) {
-            throw new \InvalidArgumentException("Class {$className} does not exist");
+            throw new InvalidArgumentException("Class {$className} does not exist");
         }
 
         if (! is_subclass_of($className, Model::class)) {
-            throw new \InvalidArgumentException("Class {$className} must extend ".Model::class);
+            throw new InvalidArgumentException("Class {$className} must extend ".Model::class);
         }
 
         $existing = $className::inRandomOrder()->first();
@@ -26,7 +26,7 @@ if (! function_exists('randomOrCreate')) {
         }
 
         if (! method_exists($className, 'factory')) {
-            throw new \InvalidArgumentException("Model {$className} does not have a factory() method");
+            throw new InvalidArgumentException("Model {$className} does not have a factory() method");
         }
 
         return $className::factory()->create();
